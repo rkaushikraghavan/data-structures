@@ -118,8 +118,7 @@ string get_input()
 
 int main()
 {
-	int ch;
-	string elem;
+	string elem,ch;
 	temp = new ll;
 	ll *call = new ll;
 	cout<<"\nImplementation of a singly linked list\n--------------------------------------\n";
@@ -131,8 +130,8 @@ int main()
 		cout<<"\n4. Print";
 		cout<<"\n5. Exit";
 		cout<<"\nYour choice: ";
-		cin>>ch;
-		switch(ch)
+		ch=get_input();
+		switch(atoi(ch.c_str()))
 		{
 			case 1:
 				if(head==NULL)
