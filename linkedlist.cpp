@@ -10,6 +10,7 @@ class ll
 	public:
 		ll()
 		{
+			data = NULL;
 			link = NULL;
 		}
 		void insert(int elem);
@@ -24,7 +25,7 @@ void ll::insert(int elem)
 	newnode->data = elem;
 	newnode->link = NULL;
 	temp=head;
-	if(head->data!=0)
+	if(head->data!=NULL)
 	{
 		while(temp->link!=NULL)
 			temp=temp->link;
