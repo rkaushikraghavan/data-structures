@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cstdlib>
+#include <cstring>
 
 using namespace std;
 
@@ -65,7 +66,7 @@ void ll::remove(int elem)
 	{
 		while(temp!=NULL)
 		{
-			if(temp->link->data == elem)
+			if(temp->link!=NULL && temp->link->data == elem)
 			{
 				temp->link = temp->link->link;
 				flag=1;
@@ -95,9 +96,30 @@ void ll::print()
 		cout<<"\nList empty.";
 }
 
+string get_input()
+{
+	int err_flag;
+	string input_string;
+	do
+	{
+		cin>>input_string;
+		err_flag=0;
+		for(int i=0; i<strlen(input_string.c_str()); i++)
+			if(input_string[i]<48 || input_string[i]>57)
+			{
+				err_flag=1;
+				break;
+			}
+		if(err_flag==1)
+			cout<<"Enter a valid input, please.\n";
+	}while(err_flag==1);
+	return input_string;
+}
+
 int main()
 {
-	int ch,elem;
+	int ch;
+	string elem;
 	temp = new ll;
 	ll *call = new ll;
 	cout<<"\nImplementation of a singly linked list\n--------------------------------------\n";
@@ -116,18 +138,18 @@ int main()
 				if(head==NULL)
 					head = new ll;
 				cout<<"\nEnter element to be inserted: ";
-				cin>>elem;
-				call->insert(elem);
+				elem=get_input();
+				call->insert(atoi(elem.c_str()));
 				break;
 			case 2:
 				cout<<"\nEnter element to be deleted: ";
-				cin>>elem;
-				call->remove(elem);
+				elem=get_input();
+				call->remove(atoi(elem.c_str()));
 				break;
 			case 3:
 				cout<<"\nEnter element to be searched for: ";
-				cin>>elem;
-				call->search(elem);
+				elem=get_input();
+				call->search(atoi(elem.c_str()));
 				break;
 			case 4:
 				call->print();
